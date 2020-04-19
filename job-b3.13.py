@@ -103,7 +103,7 @@ if __name__ == "__main__":
         doc += body
 
 
-    #Тестовый код по ссылке на GitHub (отсутствует параметр ata_image="responsive")
+    #Тестовый код по ссылке на GitHub (отсутствует параметр data_image="responsive")
     with HTML(output=None) as doc:
         with TopLevelTag("head") as head:
             with Tag("title") as title:
