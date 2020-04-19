@@ -2,7 +2,6 @@ class TopLevelTag:
 
     is_single = False
     text = ""
-    content = [] #(indent, text)
     attrs = {}
     klass = ()
 
@@ -11,7 +10,7 @@ class TopLevelTag:
         self.klass = attrs.pop("klass", ())
         self.attrs = attrs
         self.text = ""
-        self.content = []
+        self.content = [] #(indent, text)
 
     def __enter__(self):
         return self
