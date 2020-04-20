@@ -5,10 +5,10 @@ class TopLevelTag:
     attrs = {}
     klass = ()
 
-    def __init__(self, tag, **attrs):
+    def __init__(self, tag, klass=(), **kvargs):
         self.tag = tag
-        self.klass = attrs.pop("klass", ())
-        self.attrs = attrs
+        self.klass = klass
+        self.attrs = kvargs
         self.text = ""
         self.content = [] #(indent, text)
 
@@ -47,9 +47,9 @@ class TopLevelTag:
 
 class Tag(TopLevelTag):
 
-    def __init__(self, tag, **attrs):
-        TopLevelTag.__init__(self, tag, **attrs)
-        self.is_single = self.attrs.pop("is_single", False)
+    def __init__(self, tag, klass=(), is_single=False, **kvargs):
+        TopLevelTag.__init__(self, tag, klass, **kvargs)
+        self.is_single = is_single
 
 
 class HTML(TopLevelTag):
@@ -73,6 +73,7 @@ class HTML(TopLevelTag):
         for (indent, tag) in other.get_tag_list():
             self.content.append((indent, tag))
         return self
+
 
 
 if __name__ == "__main__":
